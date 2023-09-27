@@ -1,52 +1,70 @@
 package logica;
 
+import java.util.Scanner;
+
 public class Alumno {
 	//atributos
 	private String apellido;
 	private int grupo;
 	private double cuotaBase;
-
+	private Fecha nacimiento ;
+	
 	//constructor por defecto
 	public Alumno() {
-		apellido = null;
-		grupo = 0;
-		cuotaBase = 0.0;
-
+		nacimiento=new Fecha();
 	}
-
-	// constructor especifico
-	public Alumno(String ape, int gru, double cuota) {
-		apellido = ape;
-		grupo = gru;
-		cuotaBase = cuota;
+	
+	//constructor especÃ­fico
+	public Alumno(String ape, int gru, double cu, Fecha nacim) {
+		apellido=ape;
+		grupo=gru;
+		cuotaBase=cu;
+		nacimiento= nacim;
 	}
-
-	// getter y setter get:obtener y set:poner
+	
+	//getter y setter	get:obtener y set:poner
 	public String getApellido() {
 		return apellido;
 	}
-
+	
 	public void setApellido(String apellido) {
-		this.apellido = apellido;
+		this.apellido=apellido;
 	}
-
+	
 	public int getGrupo() {
 		return grupo;
 	}
-
+	
 	public void setGrupo(int gru) {
-		grupo = gru;
+		grupo=gru;
 	}
-
+	
 	public double getCuotaBase() {
 		return cuotaBase;
 	}
-
+	
 	public void setCuotaBase(double cuota) {
-		cuotaBase = cuota;
+		cuotaBase=cuota;
 	}
 	
-	// metodos específicos
+	public Fecha getNacimiento() {
+		return nacimiento;
+	}
+	
+	public void setNacimiento(Fecha nac) {
+		nacimiento=nac;
+	}
+	
+	//metodo especifico
+	public boolean boletoGratis() {
+		boolean siCorresponde = false;
+		int edad=2020-nacimiento.getAnio();
+		
+		if (edad<18)
+			siCorresponde = true;
+		return siCorresponde;
+	}
+	
 	public double cuotaNeta() {
 		double monto = cuotaBase;
 		if (grupo == 1 || grupo == 2)
@@ -55,16 +73,28 @@ public class Alumno {
 			monto = cuotaBase * 0.80;
 		return monto;
 	}
-
 	
-
-	// toString
 	@Override
 	public String toString() {
-		return "apellido: " + apellido + "\n" +
-				" grupo: " + grupo + "\n" + 
-				" cuotaBase: " + cuotaBase + "\n";
-
+		return "\n apellido: "+apellido+
+				" grupo: "+grupo+
+				" cuotaBase: "+cuotaBase+
+				" Fecha Nac: "+nacimiento.toString()+"\n";
+				
+		
+	}
+	
+	public void pedirDatos() {
+		Scanner teclado = new Scanner(System.in);
+		
+		System.out.println("Ingrese apellido: ");
+		setApellido(teclado.next());
+		System.out.println("Ingrese grupo: ");
+		setGrupo(teclado.nextInt());
+		System.out.println("Ingrese cuotaBase: ");
+		setCuotaBase(teclado.nextDouble());
+		System.out.println("Ingrese fecha de nacimiento: ");
+		this.nacimiento.pedirDatos();
 	}
 
 }
