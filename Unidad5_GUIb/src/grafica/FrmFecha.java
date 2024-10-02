@@ -28,11 +28,9 @@ public class FrmFecha extends JFrame {
 
 	
 	public FrmFecha() {
-		setTitle("Articulos");
+		setTitle("Manejar Fechas");
 		iniciarComponentes();
 		iniciarManejadoresEventos();
-		
-		
 	}
 
 
@@ -61,8 +59,6 @@ public class FrmFecha extends JFrame {
 					System.out.println("Error");
 					JOptionPane.showMessageDialog(null,"Error");
 				}
-				
-				
 			}
 		});
 		
