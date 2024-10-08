@@ -18,7 +18,7 @@ import java.awt.Color;
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import com.toedter.calendar.JDateChooser;
+//import com.toedter.calendar.JDateChooser;
 import javax.swing.JCheckBox;
 
 public class FrmAlumno extends JFrame {
